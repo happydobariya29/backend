@@ -10,6 +10,10 @@ const port = 3001;
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    res.status(200).send('Welcome to the API!');
+});
+
 // MySQL connection configuration
 const dbConfig = mysql.createConnection({
     host: process.env.MYSQL_HOST,
