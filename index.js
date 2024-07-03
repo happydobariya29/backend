@@ -22,14 +22,6 @@ const dbConfig = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
     port: process.env.MYSQL_PORT
 });
-
-var del = connection._protocol._delegateError;
-connection._protocol._delegateError = function(err, sequence){
-  if (err.fatal) {
-    console.trace('fatal error: ' + err.message);
-  }
-  return del.call(this, err, sequence);
-};
 //Api for userdetails
 app.get('/userdetails', (req, res) => {
     const { contactNumber } = req.body;
